@@ -65,7 +65,7 @@ export const findUserByEmail = (email: string): User | undefined => {
  * @param {string} password - The password to validate
  * @returns {Promise<boolean>} true if the password is valid, false otherwise
  */
-const validatePassword = async (user: User, password: string): Promise<boolean> => {
+export const validatePassword = async (user: User, password: string): Promise<boolean> => {
     return compare(password, user.password);
 }
 
@@ -75,7 +75,7 @@ const validatePassword = async (user: User, password: string): Promise<boolean> 
  * @param {string} email - The email of the user to revoke the token from
  * @return {Promise<boolean>} - True if the token was revoked, false otherwise
  */
-export const revokeToken = async (email: string): Promise<boolean> => {
+export const revokeUserToken = async (email: string): Promise<boolean> => {
     const foundUser = findUserByEmail(email);
     if (!foundUser) return false;
 
