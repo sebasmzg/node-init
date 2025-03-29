@@ -34,6 +34,10 @@ export const characterById = (id: number): Character | undefined => {
  * @return {Character} - Returns the created character with a unique ID
  */
 export const addCharacter = (character: Character): Character => {
+    if(!characters.has(character.id)){
+        console.error(`Character with id ${character.id} already exists`);
+        return character;
+    }
     const newCharacter = {
         ...character,
         id: new Date().getTime(),
